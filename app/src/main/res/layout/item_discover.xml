@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp"
+    android:background="@drawable/bg_rounded_primary_full_stroke"
+    android:layout_marginBottom="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_parent_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_thumbnail"
+                android:layout_width="80dp"
+                android:layout_height="0dp"
+                android:background="@null"
+                android:clickable="false"
+                android:elevation="8dp"
+                app:layout_constraintDimensionRatio="h,0.66:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/rounded_corner" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/cl_parent_image"
+            android:layout_marginLeft="16dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_movie_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_semibold"
+                android:maxLines="4"
+                android:layout_marginTop="4dp"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                tools:text="This is  movie title" />
+
+            <TextView
+                android:id="@+id/tv_movie_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"
+                android:textColor="@color/grey"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/poppins_light"
+                app:drawableLeftCompat="@drawable/ic_date_range"
+                app:drawableTint="@color/grey"
+                tools:text="2022" />
+
+            <TextView
+                android:id="@+id/tv_movie_popularity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"
+                android:textColor="@color/grey"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:fontFamily="@font/poppins_light"
+                app:drawableLeftCompat="@drawable/person_outline"
+                app:drawableTint="@color/grey"
+                tools:text="3018" />
+
+            <TextView
+                android:id="@+id/tv_movie_rating"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="12sp"
+                android:textColor="@color/yellow"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center_vertical"
+                android:drawablePadding="4dp"
+                tools:text="7"
+                app:drawableLeftCompat="@drawable/ic_star_border"
+                app:drawableTint="@color/yellow" />
+        </LinearLayout>
+
+</RelativeLayout>

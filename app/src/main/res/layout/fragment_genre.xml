@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_color"
+    android:paddingBottom="16dp"
+    android:paddingTop="32dp"
+    android:paddingHorizontal="16dp"
+    tools:context=".ui.genre.GenreFragment">
+
+    <TextView
+        android:id="@+id/tv_title_genre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="What genre you\nlike to watch?"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="20dp"
+        android:layout_marginBottom="24dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_title_genre"
+        android:id="@+id/rv_genre"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/la_loading"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/loading" />
+
+</RelativeLayout>
