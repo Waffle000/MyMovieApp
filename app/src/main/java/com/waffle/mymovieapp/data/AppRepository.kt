@@ -6,7 +6,10 @@ import com.waffle.mymovieapp.data.response.DiscoverResponse
 import com.waffle.mymovieapp.data.response.DiscoverReviewResponse
 import com.waffle.mymovieapp.data.response.DiscoverThrillerResponse
 import com.waffle.mymovieapp.data.response.GenreResponse
+import com.waffle.mymovieapp.data.response.NowPlayingResponse
 import com.waffle.mymovieapp.data.response.PopularResponse
+import com.waffle.mymovieapp.data.response.TopRatedResponse
+import com.waffle.mymovieapp.data.response.UpcomingResponse
 import retrofit2.Response
 
 class AppRepository(private val apiService: ApiService) {
@@ -34,8 +37,20 @@ class AppRepository(private val apiService: ApiService) {
         return apiService.getDiscoverTrailer(id)
     }
 
-    suspend fun getPopularList() : Response<PopularResponse> {
-        return apiService.getPopularList()
+    suspend fun getPopularList(page: Int) : Response<PopularResponse> {
+        return apiService.getPopularList(page)
+    }
+
+    suspend fun getNowPlayingList(page: Int) : Response<NowPlayingResponse> {
+        return apiService.getNowPlayingList(page)
+    }
+
+    suspend fun getTopRatedList(page: Int) : Response<TopRatedResponse> {
+        return apiService.getTopRatedList(page)
+    }
+
+    suspend fun getUpcomingList(page: Int) : Response<UpcomingResponse> {
+        return apiService.getUpcomingList(page)
     }
 
 }

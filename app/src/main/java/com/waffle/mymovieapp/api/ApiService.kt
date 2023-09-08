@@ -5,7 +5,10 @@ import com.waffle.mymovieapp.data.response.DiscoverResponse
 import com.waffle.mymovieapp.data.response.DiscoverReviewResponse
 import com.waffle.mymovieapp.data.response.DiscoverThrillerResponse
 import com.waffle.mymovieapp.data.response.GenreResponse
+import com.waffle.mymovieapp.data.response.NowPlayingResponse
 import com.waffle.mymovieapp.data.response.PopularResponse
+import com.waffle.mymovieapp.data.response.TopRatedResponse
+import com.waffle.mymovieapp.data.response.UpcomingResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -39,5 +42,15 @@ interface ApiService {
     ) : Response<DiscoverThrillerResponse>
 
     @GET("movie/popular")
-    suspend fun getPopularList() : Response<PopularResponse>
+    suspend fun getPopularList(@Query("page") page: Int) : Response<PopularResponse>
+
+    @GET("movie/now_playing")
+    suspend fun getNowPlayingList(@Query("page") page: Int) : Response<NowPlayingResponse>
+
+    @GET("movie/top_rated")
+    suspend fun getTopRatedList(@Query("page") page: Int) : Response<TopRatedResponse>
+
+    @GET("movie/upcoming")
+    suspend fun getUpcomingList(@Query("page") page: Int) : Response<UpcomingResponse>
+
 }

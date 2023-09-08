@@ -54,6 +54,9 @@ class GenreFragment : BaseFragment() {
     }
 
     override fun init() {
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     private fun showLoading(){

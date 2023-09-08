@@ -3,12 +3,13 @@ package com.waffle.mymovieapp.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.smarteist.autoimageslider.SliderViewAdapter
-import com.waffle.mymovieapp.data.response.ResultsItemPopular
+import com.waffle.mymovieapp.data.response.ResultsItem
 import com.waffle.mymovieapp.databinding.ItemImageSliderBinding
 import com.waffle.mymovieapp.utils.loadImage
+import com.waffle.mymovieapp.utils.loadImageSlider
 
 
-class SliderAdapter(private val mSliderItems : List<ResultsItemPopular>) :
+class SliderAdapter(private val mSliderItems : List<ResultsItem>) :
     SliderViewAdapter<SliderAdapter.SliderAdapterVH>() {
 
     override fun onCreateViewHolder(parent: ViewGroup): SliderAdapterVH {
@@ -34,9 +35,9 @@ class SliderAdapter(private val mSliderItems : List<ResultsItemPopular>) :
 
     inner class SliderAdapterVH(private val binding: ItemImageSliderBinding) :
         SliderViewAdapter.ViewHolder(binding.root) {
-        fun bind(item: ResultsItemPopular) {
+        fun bind(item: ResultsItem) {
             binding.apply {
-                ivAutoImageSlider.loadImage(item.backdropPath)
+                ivAutoImageSlider.loadImageSlider(item.backdropPath)
             }
         }
     }

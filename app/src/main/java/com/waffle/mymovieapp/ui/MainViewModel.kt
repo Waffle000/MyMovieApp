@@ -13,11 +13,16 @@ import com.waffle.mymovieapp.data.AppRepository
 import com.waffle.mymovieapp.data.response.DiscoverDetailResponse
 import com.waffle.mymovieapp.data.response.DiscoverThrillerResponse
 import com.waffle.mymovieapp.data.response.GenreResponse
+import com.waffle.mymovieapp.data.response.NowPlayingResponse
 import com.waffle.mymovieapp.data.response.PopularResponse
 import com.waffle.mymovieapp.data.response.ResultsItem
 import com.waffle.mymovieapp.data.response.ResultsItemReview
 import com.waffle.mymovieapp.paging.DiscoverPagingRepository
 import com.waffle.mymovieapp.paging.DiscoverReviewPagingRepository
+import com.waffle.mymovieapp.paging.NowPlayingPagingRepository
+import com.waffle.mymovieapp.paging.PopularPagingRepository
+import com.waffle.mymovieapp.paging.TopRatedPagingRepository
+import com.waffle.mymovieapp.paging.UpcomingPagingRepository
 import com.waffle.mymovieapp.utils.SingleLiveEvent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
@@ -69,6 +74,70 @@ class MainViewModel(private val repository: AppRepository): ViewModel() {
 
     }
 
+    fun getPopularList() : Flow<PagingData<ResultsItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false,
+                initialLoadSize = 10
+            ),
+            pagingSourceFactory = {
+                PopularPagingRepository(
+                    repository
+                )
+            }
+        ).flow.cachedIn(viewModelScope)
+
+    }
+
+    fun getNowPlayingList() : Flow<PagingData<ResultsItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false,
+                initialLoadSize = 10
+            ),
+            pagingSourceFactory = {
+                NowPlayingPagingRepository(
+                    repository
+                )
+            }
+        ).flow.cachedIn(viewModelScope)
+
+    }
+
+    fun getTopRatedList() : Flow<PagingData<ResultsItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false,
+                initialLoadSize = 10
+            ),
+            pagingSourceFactory = {
+                TopRatedPagingRepository(
+                    repository
+                )
+            }
+        ).flow.cachedIn(viewModelScope)
+
+    }
+
+    fun getUpcomingList() : Flow<PagingData<ResultsItem>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 20,
+                enablePlaceholders = false,
+                initialLoadSize = 10
+            ),
+            pagingSourceFactory = {
+                UpcomingPagingRepository(
+                    repository
+                )
+            }
+        ).flow.cachedIn(viewModelScope)
+
+    }
+
     fun getDiscoverDetail(id: Int) {
         viewModelScope.launch {
             try {
@@ -114,10 +183,10 @@ class MainViewModel(private val repository: AppRepository): ViewModel() {
         }
     }
 
-    fun getPopularList() {
+    fun getPopularImage() {
         viewModelScope.launch {
             try {
-                val result = repository.getPopularList().body()
+                val result = repository.getPopularList(1).body()
                 if (result != null) {
                     getPopularListSuccess.postValue(SingleLiveEvent(result))
                 } else {

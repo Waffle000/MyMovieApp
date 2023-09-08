@@ -22,6 +22,19 @@ fun ImageView.loadImage(url: String?, placeholder: Int = R.drawable.ic_launcher_
         .into(this)
 }
 
+fun ImageView.loadImageSlider(url: String?, placeholder: Int = R.drawable.ic_launcher_foreground) {
+    Glide.with(this)
+        .load("https://image.tmdb.org/t/p/original/$url")
+        .apply(
+            RequestOptions()
+                .skipMemoryCache(true)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .placeholder(placeholder)
+                .error(placeholder)
+        )
+        .into(this)
+}
+
 internal fun Activity.disableScreen(){
     window.setFlags(
         WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
