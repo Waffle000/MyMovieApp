@@ -47,6 +47,7 @@ MyMovieapp is an application to display various films from MovieDB Api such as f
 
 - Login User
 - Register User
+- Notification For Watching Movies
 - Popular Movies
 - Now Playing Movies
 - Top Rated Movies
